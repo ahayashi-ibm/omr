@@ -35,6 +35,8 @@
 #include "StartupManagerImpl.hpp"
 #include "omrExampleVM.hpp"
 
+// This is a change to main.cpp
+
 extern "C" {
 
 int
