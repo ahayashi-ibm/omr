@@ -19,6 +19,8 @@
 #ifndef COMPILATIONEXCEPTION_HPP
 #define COMPILATIONEXCEPTION_HPP
 
+#pragma once
+
 #include <exception>
 
 namespace TR {
