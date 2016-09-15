@@ -59,7 +59,7 @@
 #define TR_ASSERT_HPP
 
 #include "infra/Annotations.hpp"                // OMR_NORETURN
-#include "exceptions/CompilationException.hpp"
+#include "compile/CompilationException.hpp"
 namespace TR
    {
    // Don't use these directly.

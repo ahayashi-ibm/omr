@@ -33,7 +33,7 @@
 #include "env/IO.hpp"
 #include "env/JitConfig.hpp"
 #include "env/jittypes.h"
-#include "exceptions/CompilationException.hpp"
+#include "compile/CompilationException.hpp"
 #include "il/ILOps.hpp"
 #include "il/OMRILOps.hpp"
 #include "il/Node.hpp"
