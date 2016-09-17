@@ -39,32 +39,31 @@ The extensible design is the reason for the shape of the class hierarchy, the la
 
 The core compiler components are provided under the `compiler/` top-level directory and are organized as follows:
 
-| Directory  | Purpose |
-| =========  | ======= |
-| codegen/   | Code for transforming IL trees into machine instructions.  This includes pseudo-instruction generation with virtual registers, local register assignment, binary encoding, and relocation processing.
-| compile/   | Logic managing the compilation of a method.
-| control/   | Generic logic to decide on when and how to compile a method.
-| cs2/       | A legacy collection of utilities providing functionality such as container classes and lexical timers.  The functions within this directory are **deprecated** and are actively being replaced with C++ STL equivalents or new implementations based on STL.
-| env/       | Generic interface to the environment that is requesting the compilation.  In most cases this is the interface to the VM or compiler frontend that is incorporating the Eclipse OMR compiler technology.  For example, it can be used to answer questions about the VM configuration, object model, classes, floating point semantics, etc.
-| il/        | Intermediate language definition and utilities.
-| ilgen/     | Utilities to help with the generation of intermediate language from some external representation.
-| infra/     | Support infrastructure.
-| optimizer/ | High-level, IL tree-based optimizations and utilities.
-| ras/       | Debug and servicability utilities, including tracing and logging.
-| runtime/   | Post-compilation services available to compiled code at runtime.
-| arm/       | ARM processor specializations |
-| x/         | X86 processor specializations |
-| p/         | Power processor specializations |
-| z/         | System Z processor specializations |
+Directory  | Purpose
+---------  | -------
+codegen/   | Code for transforming IL trees into machine instructions.  This includes pseudo-instruction generation with virtual registers, local register assignment, binary encoding, and relocation processing.
+compile/   | Logic managing the compilation of a method.
+control/   | Generic logic to decide on when and how to compile a method.
+cs2/       | A legacy collection of utilities providing functionality such as container classes and lexical timers.  The functions within this directory are **deprecated** and are actively being replaced with C++ STL equivalents or new implementations based on STL.
+env/       | Generic interface to the environment that is requesting the compilation.  In most cases this is the interface to the VM or compiler frontend that is incorporating the Eclipse OMR compiler technology.  For example, it can be used to answer questions about the VM configuration, object model, classes, floating point semantics, etc.
+il/        | Intermediate language definition and utilities.
+ilgen/     | Utilities to help with the generation of intermediate language from some external representation.
+infra/     | Support infrastructure.
+optimizer/ | High-level, IL tree-based optimizations and utilities.
+ras/       | Debug and servicability utilities, including tracing and logging.
+runtime/   | Post-compilation services available to compiled code at runtime.
+arm/       | ARM processor specializations
+x/         | X86 processor specializations
+p/         | Power processor specializations
+z/         | System Z processor specializations
 
 Other resources can be found in the Eclipse OMR project as follows:
 
-| Directory | Purpose |
-| ========= | ======= |
-| jitbuilder/ | JitBuilder technology extending Eclipse OMR technology |
-| fvtest/compilertest | Unit tests for compiler technology |
-| doc/compiler | Additional documentation |
-|
+Directory | Purpose
+--------- | -------
+jitbuilder/ | JitBuilder technology extending Eclipse OMR technology
+fvtest/compilertest | Unit tests for compiler technology
+doc/compiler | Additional documentation
 
 ## Namespaces
 
@@ -85,14 +84,14 @@ Generally there should not be a need to enable these macros.  Our expecatation i
 
 The compiler technology has been built successfully with the following compilers:
 
-| OS    | Architecture | Build Compiler | Version |
-|-------|--------------|----------------|---------|
-| Linux | x86          | g++            | 4.4.7   |
-| Linux | s390x        | g++            | 4.4.7   |
-| Linux | ppc64le      | XLC            | 12.1    |
-| Linux | ppc64le      | g++            | 4.4.7   |
-| AIX   | ppc64        | XLC            | 12.1    |
-| z/OS  | s390x        | XLC            | v2r2    |
+OS    | Architecture | Build Compiler | Version
+------|--------------|----------------|--------
+Linux | x86          | g++            | 4.4.7
+Linux | s390x        | g++            | 4.4.7
+Linux | ppc64le      | XLC            | 12.1
+Linux | ppc64le      | g++            | 4.4.7
+AIX   | ppc64        | XLC            | 12.1
+z/OS  | s390x        | XLC            | v2r2
 
 Older compilers may not support all the C++11 features required, and while we
 endeavour to build with newer compilers, incompatibilities have occurred
@@ -104,13 +103,13 @@ request mergeable. To minimize issues, see the table below containing a
 summary of our ability to support C++ language features.
 
 
-| C++11 Core Language Features                    | Supported |
-|-------------------------------------------------|-----------|
-| Variadic templates                              | Some      |
-| static_assert                                   | Yes       |
-| auto                                            | Yes       |
-| decltype                                        | Yes       |
-| Delegating constructors                         | No        |
-| Inheriting constructors                         | No        |
-| Extended friend declarations                    | No        |
-| Range-based for-loop                            | No        |
+C++11 Core Language Features                    | Supported
+------------------------------------------------|----------
+Variadic templates                              | Some
+static_assert                                   | Yes
+auto                                            | Yes
+decltype                                        | Yes
+Delegating constructors                         | No
+Inheriting constructors                         | No
+Extended friend declarations                    | No
+Range-based for-loop                            | No
