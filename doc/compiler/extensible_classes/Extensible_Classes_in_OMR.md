@@ -1,6 +1,6 @@
 # Extensible Classes in OMR  {#OMRExtensibleClasses}
 
-This document describes the use of extensible classes in the OMR JIT source code. For a more general description of extensible
+This document describes the use of extensible classes in the Eclipse OMR source code. For a more general description of extensible
 classes, see the `Extensible_Classes.md` (\\subpage ExtensibleClasses) document. If you are unfamiliar with extensible classes, it is strongly recommended
 that you read that document first.
 
@@ -12,9 +12,6 @@ We currently have X projects as part of our OMR suite. These are
 |------------|----------|
 | OMR        | A collection of infrastructural compiler components that can be used to construct optimizing compilers for language front ends or virtual machines. |
 | JitBuilder | A framework of components that abstracts away some of the complexity of JIT compilers. |
-| J9         | The J9 Java JIT that is based on IBM compilation technology. |
-| Ruby       | JIT for MRI Ruby based on technology available from OMR. |
-| Python     | JIT for CPython based on technology available from OMR. |
 | Test       | A compiler testing framework. |
 
 ## Namespaces
@@ -23,9 +20,6 @@ Each project is given a namespace as follows:
 
 - `OMR`
 - `JitBuilder`
-- `J9`
-- `Ruby`
-- `Python`
 - `Test`
 - `TR` (namespace for concrete classes)
 
@@ -46,9 +40,6 @@ projects and their specializations. The project directories are:
 
 - `omr`
 - `jitbuilder`
-- `trj9` (for the J9 project)
-- `ruby`
-- `cpython` (for the Python project)
 - `test`
 
 The architecture sub-directories are:
