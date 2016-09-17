@@ -79,6 +79,7 @@ Throughout the codebase you may find code guarded with `#ifdef XXX_PROJECT_SPECI
 
 Generally there should not be a need to enable these macros.  Our expecatation is that either that guarded code will be enabled over time as it is made more general purpose for other language environments, or it will be removed outright as that code is refactored as part of the Eclipse OMR project.
 
+We recognize the presence of these macros is far from ideal, and IBM will be working to eliminate them over time so that the codebase is self-contained and fully testable.  These macros should not be imitated in newer code commits except where absolutely necessary.
 
 # Build Info
 
