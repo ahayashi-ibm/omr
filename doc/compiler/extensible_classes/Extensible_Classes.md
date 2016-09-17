@@ -2,14 +2,14 @@
 
 ## Introduction
 
-Extensible classes are a way of implementing static polymorphism in c++. They allow various projects to override and extend the
+Extensible classes are a way of implementing static polymorphism in C++. They allow various projects to override and extend the
 functionality of an existing class, through inheritance, in order to suit their specific needs. This is done by carefully organizing a
 project in a way that lets the compiler find the most extended implementation of a function.
 
 This document describes the general characteristics of extensible classes as well as their implementation. Although there are alternative
 extensible classes implementations, of all the approaches explored, the one presented here has been the most effective.
 
-## What is an extensible class
+## What is an extensible class?
 
 Suppose we have a group of projects that are similarly structured. They share similar features and also have similar implementation.
 It makes sense to abstract away the common functionality and structure so that it may be reused more effectively.
@@ -26,7 +26,7 @@ useful, for example, in cases where some special functionality is required to su
 
 ## Implementation
 
-In essence, an extensible class is just a hierarchy of normal c++ classes. What makes extensible classes special is how the project files,
+In essence, an extensible class is just a hierarchy of normal C++ classes. What makes extensible classes special is how the project files,
 directories, and class hierarchies are organized.
 
 ### Organization

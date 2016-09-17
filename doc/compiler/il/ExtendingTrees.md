@@ -1,10 +1,6 @@
 Extending Trees  {#ExtendingTrees}
 ===============
 
-\note This document was constructed from an unpublished paper authored by Vijay
-      Sundaresan, Patrick Doyle, Ali Sheikh, Nikolay Korovaiko and Ian Gartley.
-      Huge amounts of thanks go to them for producing the bulk of this.  
-
 When adding a new feature to an IR, a question arises as to whether to add a
 new opcode for the new feature, or to implement the feature using existing
 opcodes. 

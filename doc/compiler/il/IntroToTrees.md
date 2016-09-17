@@ -1,12 +1,6 @@
 Testarossa's Intermediate Language: An Intro to Trees {#IntroToTrees}
 =====================================================
 
-\note This document was constructed from an unpublished paper authored by Vijay
-      Sundaresan, Patrick Doyle, Ali Sheikh, Nikolay Korovaiko and Ian Gartley.
-      Huge amounts of thanks go to them for producing the bulk of this.  
-
-
-
 The Testarossa compiler project began in 1998 as a clean-room Java JIT
 implementation to address IBM's need for a high performing Java runtime for
 embedded systems.  Over the past couple of decades, it has grown to become the

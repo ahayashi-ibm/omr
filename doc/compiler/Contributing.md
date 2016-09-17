@@ -37,7 +37,7 @@ To add prose documentation about the code you can use the page functionality. Yo
 
 ###Documentation Files 
  
-If you'd like, you can add prose in Markdown format into a <tt>doc</tt> directory. So long as this directory is scanned by Doxygen, it will be included as a related page. 
+If you'd like, you can add prose in Markdown format into the <tt>doc/compiler</tt> directory. So long as this directory is scanned by Doxygen, it will be included as a related page. 
 
 You can give this page a name to be referenced by adding a name tag:
 
