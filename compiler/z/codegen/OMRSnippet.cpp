@@ -227,19 +227,6 @@ OMR::Z::Snippet::getLoadVMThreadInstructionLength(TR::CodeGenerator *cg)
 uint8_t *
 OMR::Z::Snippet::generateRuntimeInstrumentationOnOffInstruction(TR::CodeGenerator *cg, uint8_t *cursor, TR::InstOpCode::Mnemonic op, bool isPrivateLinkage)
    {
-   if (cg->getSupportsRuntimeInstrumentation())
-      {
-      if (!isPrivateLinkage || cg->getEnableRIOverPrivateLinkage())
-         {
-         if (op == TR::InstOpCode::RION)
-            *(int32_t *) cursor = 0xAA010000;
-         else if (op == TR::InstOpCode::RIOFF)
-            *(int32_t *) cursor = 0xAA030000;
-         else
-            TR_ASSERT( 0, "Unexpected RI opcode.");
-         cursor += sizeof(int32_t);
-         }
-      }
    return cursor;
    }
 
@@ -253,11 +240,6 @@ OMR::Z::Snippet::generateRuntimeInstrumentationOnOffInstruction(TR::CodeGenerato
 uint32_t
 OMR::Z::Snippet::getRuntimeInstrumentationOnOffInstructionLength(TR::CodeGenerator *cg, bool isPrivateLinkage)
    {
-   if (cg->getSupportsRuntimeInstrumentation())
-      {
-      if (!isPrivateLinkage || cg->getEnableRIOverPrivateLinkage())
-         return sizeof(int32_t);  // Both RION and RIOFF are 32-bit (4-byte) instructions.
-      }
    return 0;
    }
 #endif
