@@ -575,7 +575,6 @@ public:
 
    void setBranchOnCountFlag(TR::Node *node, vcount_t visitCount);
 
-   bool ignoreNodeForPRE(TR::Node *);
    bool needs64bitPrecision(TR::Node *node);
 
    virtual bool isUsing32BitEvaluator(TR::Node *node);
@@ -627,12 +626,6 @@ public:
    //
    bool enableRegisterAssociations();
    bool enableRegisterPairAssociation();
-
-   // REMATERIALIZATION
-   //
-   bool materializesLargeConstants();
-   int32_t getLargestNegConstThatMustBeMaterialized();
-   int32_t getSmallestPosConstThatMustBeMaterialized();
 
    bool canBeAffectedByStoreTagStalls() { return true; }
 
@@ -1059,11 +1052,6 @@ public:
 
    int16_t getMinShortForLongCompareNarrower() { return 0; }
    int8_t getMinByteForLongCompareNarrower() { return 0; }
-
-   bool supportsBitCopyByRotateOpt()
-      {
-      return TR::Compiler->target.is64Bit();
-      }
 
    bool IsInMemoryType(TR::DataType type);
 
