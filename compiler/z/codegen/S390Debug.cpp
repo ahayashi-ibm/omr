@@ -143,8 +143,8 @@ TR_Debug::printPrefix(TR::FILE *pOutFile, TR::Instruction * instr)
             if (instr->getKind() == TR::Instruction::IsSS1 || instr->getKind() == TR::Instruction::IsSS2)
                {
                TR::MemoryReference *memRef = (instr->getKind() == TR::Instruction::IsSS1) ?
-                                                   ((TR_S390SS1Instruction *)(instr))->getMemoryReference2() :
-                                                   ((TR_S390SS2Instruction *)(instr))->getMemoryReference2();
+                                                   ((TR::S390SS1Instruction *)(instr))->getMemoryReference2() :
+                                                   ((TR::S390SS2Instruction *)(instr))->getMemoryReference2();
                if (memRef && memRef->getSymbolReference() && instr->getNode()->getOpCodeValue() != TR::BBStart && instr->getRegisterOperand(0))
                   trfprintf(pOutFile, ", #%d (%s)", memRef->getSymbolReference()->getReferenceNumber(), instr->getRegisterOperand(0)->getRegisterName(TR::comp()));
                else if (memRef && memRef->getSymbolReference())
@@ -189,42 +189,42 @@ TR_Debug::printz(TR::FILE *pOutFile, TR::Instruction * instr)
    switch (instr->getKind())
       {
       case TR::Instruction::IsLabel:
-         print(pOutFile, (TR_S390LabelInstruction *) instr);
+         print(pOutFile, (TR::S390LabelInstruction *) instr);
          break;
       case TR::Instruction::IsBranch:
-         print(pOutFile, (TR_S390BranchInstruction *) instr);
+         print(pOutFile, (TR::S390BranchInstruction *) instr);
          break;
       case TR::Instruction::IsBranchOnCount:
-         print(pOutFile, (TR_S390BranchOnCountInstruction *) instr);
+         print(pOutFile, (TR::S390BranchOnCountInstruction *) instr);
          break;
       case TR::Instruction::IsBranchOnIndex:
-         print(pOutFile, (TR_S390BranchOnIndexInstruction *) instr);
+         print(pOutFile, (TR::S390BranchOnIndexInstruction *) instr);
          break;
       case TR::Instruction::IsImm:
-         print(pOutFile, (TR_S390ImmInstruction *) instr);
+         print(pOutFile, (TR::S390ImmInstruction *) instr);
          break;
       case TR::Instruction::IsImmSnippet:
-         print(pOutFile, (TR_S390ImmSnippetInstruction *) instr);
+         print(pOutFile, (TR::S390ImmSnippetInstruction *) instr);
          break;
       case TR::Instruction::IsImmSym:
-         print(pOutFile, (TR_S390ImmSymInstruction *) instr);
+         print(pOutFile, (TR::S390ImmSymInstruction *) instr);
          break;
       case TR::Instruction::IsImm2Byte:
-         print(pOutFile, (TR_S390Imm2Instruction *) instr);
+         print(pOutFile, (TR::S390Imm2Instruction *) instr);
          break;
       case TR::Instruction::IsReg:
-         print(pOutFile, (TR_S390RegInstruction *) instr);
+         print(pOutFile, (TR::S390RegInstruction *) instr);
          break;
       case TR::Instruction::IsRR:
-         print(pOutFile, (TR_S390RRInstruction *) instr);
+         print(pOutFile, (TR::S390RRInstruction *) instr);
          break;
       case TR::Instruction::IsRRE:
          {
          TR::InstOpCode::Mnemonic opCode = instr->getOpCodeValue();
          if (opCode == TR::InstOpCode::TROO || opCode == TR::InstOpCode::TRTO || opCode == TR::InstOpCode::TROT || opCode == TR::InstOpCode::TRTT)
-            print(pOutFile, (TR_S390TranslateInstruction *) instr);
+            print(pOutFile, (TR::S390TranslateInstruction *) instr);
          else
-            print(pOutFile, (TR_S390RRInstruction *) instr);
+            print(pOutFile, (TR::S390RRInstruction *) instr);
          break;
          }
       case TR::Instruction::IsRRD: // RRD is encoded use RRF
@@ -233,118 +233,118 @@ TR_Debug::printz(TR::FILE *pOutFile, TR::Instruction * instr)
       case TR::Instruction::IsRRF3:
       case TR::Instruction::IsRRF4:
       case TR::Instruction::IsRRF5:
-         print(pOutFile, (TR_S390RRFInstruction *) instr);
+         print(pOutFile, (TR::S390RRFInstruction *) instr);
          break;
       case TR::Instruction::IsRRR:
-         print(pOutFile, (TR_S390RRRInstruction *) instr);
+         print(pOutFile, (TR::S390RRRInstruction *) instr);
          break;
       case TR::Instruction::IsRI:
-         print(pOutFile, (TR_S390RIInstruction *) instr);
+         print(pOutFile, (TR::S390RIInstruction *) instr);
          break;
       case TR::Instruction::IsRIL:
-         print(pOutFile, (TR_S390RILInstruction *) instr);
+         print(pOutFile, (TR::S390RILInstruction *) instr);
          break;
       case TR::Instruction::IsRS:
-         print(pOutFile, (TR_S390RSInstruction *) instr);
+         print(pOutFile, (TR::S390RSInstruction *) instr);
          break;
       case TR::Instruction::IsRSL:
-         print(pOutFile, (TR_S390RSLInstruction *) instr);
+         print(pOutFile, (TR::S390RSLInstruction *) instr);
          break;
       case TR::Instruction::IsRSLb:
-         print(pOutFile, (TR_S390RSLbInstruction *) instr);
+         print(pOutFile, (TR::S390RSLbInstruction *) instr);
          break;
       case TR::Instruction::IsRSY:
-         print(pOutFile, (TR_S390RSInstruction *) instr);
+         print(pOutFile, (TR::S390RSInstruction *) instr);
          break;
       case TR::Instruction::IsRX:
-         print(pOutFile, (TR_S390RXInstruction *) instr);
+         print(pOutFile, (TR::S390RXInstruction *) instr);
          break;
       case TR::Instruction::IsRXE:
-         print(pOutFile, (TR_S390RXEInstruction *) instr);
+         print(pOutFile, (TR::S390RXEInstruction *) instr);
          break;
       case TR::Instruction::IsRXY:
-         print(pOutFile, (TR_S390RXInstruction *) instr);
+         print(pOutFile, (TR::S390RXInstruction *) instr);
          break;
       case TR::Instruction::IsRXYb:
-         print(pOutFile, (TR_S390MemInstruction *) instr);
+         print(pOutFile, (TR::S390MemInstruction *) instr);
          break;
       case TR::Instruction::IsRXF:
-         print(pOutFile, (TR_S390RXFInstruction *) instr);
+         print(pOutFile, (TR::S390RXFInstruction *) instr);
          break;
 #if !defined(PUBLIC_BUILD)
       case TR::Instruction::IsSMI:
-         print(pOutFile, (TR_S390SMIInstruction *) instr);
+         print(pOutFile, (TR::S390SMIInstruction *) instr);
          break;
       case TR::Instruction::IsMII:
-         print(pOutFile, (TR_S390MIIInstruction *) instr);
+         print(pOutFile, (TR::S390MIIInstruction *) instr);
          break;
 #endif
       case TR::Instruction::IsMem:
-         print(pOutFile, (TR_S390MemInstruction *) instr);
+         print(pOutFile, (TR::S390MemInstruction *) instr);
          break;
       case TR::Instruction::IsSS1:
-         print(pOutFile, (TR_S390SS1Instruction *) instr);
+         print(pOutFile, (TR::S390SS1Instruction *) instr);
          break;
       case TR::Instruction::IsSS2:
-         print(pOutFile, (TR_S390SS2Instruction *) instr);
+         print(pOutFile, (TR::S390SS2Instruction *) instr);
          break;
       case TR::Instruction::IsSS4:
-         print(pOutFile, (TR_S390SS4Instruction *) instr);
+         print(pOutFile, (TR::S390SS4Instruction *) instr);
          break;
       case TR::Instruction::IsSSF:
-         print(pOutFile, (TR_S390SSFInstruction *) instr);
+         print(pOutFile, (TR::S390SSFInstruction *) instr);
          break;
       case TR::Instruction::IsSI:
       case TR::Instruction::IsSIY:
-         print(pOutFile, (TR_S390SIInstruction *) instr);
+         print(pOutFile, (TR::S390SIInstruction *) instr);
          break;
       case TR::Instruction::IsSIL:
-         print(pOutFile, (TR_S390SILInstruction *) instr);
+         print(pOutFile, (TR::S390SILInstruction *) instr);
          break;
       case TR::Instruction::IsS:
-         print(pOutFile, (TR_S390SInstruction *) instr);
+         print(pOutFile, (TR::S390SInstruction *) instr);
          break;
       case TR::Instruction::IsNOP:
-         print(pOutFile, (TR_S390NOPInstruction *) instr);
+         print(pOutFile, (TR::S390NOPInstruction *) instr);
          break;
 #ifdef J9_PROJECT_SPECIFIC
       case TR::Instruction::IsVirtualGuardNOP:
-         print(pOutFile, (TR_S390VirtualGuardNOPInstruction *) instr);
+         print(pOutFile, (TR::S390VirtualGuardNOPInstruction *) instr);
          break;
 #endif
       case TR::Instruction::IsAnnot:
-         print(pOutFile, (TR_S390AnnotationInstruction *) instr);
+         print(pOutFile, (TR::S390AnnotationInstruction *) instr);
          break;
       case TR::Instruction::IsPseudo:
-            print(pOutFile, (TR_S390PseudoInstruction *) instr);
+            print(pOutFile, (TR::S390PseudoInstruction *) instr);
          break;
       case TR::Instruction::IsRRS:
-            print(pOutFile, (TR_S390RRSInstruction *) instr);
+            print(pOutFile, (TR::S390RRSInstruction *) instr);
          break;
       case TR::Instruction::IsRIE:
-            print(pOutFile, (TR_S390RIEInstruction *) instr);
+            print(pOutFile, (TR::S390RIEInstruction *) instr);
          break;
       case TR::Instruction::IsRIS:
-            print(pOutFile, (TR_S390RISInstruction *) instr);
+            print(pOutFile, (TR::S390RISInstruction *) instr);
          break;
       case TR::Instruction::IsOpCodeOnly:
-            print(pOutFile, (TR_S390OpCodeOnlyInstruction *) instr);
+            print(pOutFile, (TR::S390OpCodeOnlyInstruction *) instr);
          break;
       case TR::Instruction::IsI:
-            print(pOutFile, (TR_S390IInstruction *) instr);
+            print(pOutFile, (TR::S390IInstruction *) instr);
          break;
       case TR::Instruction::IsSSE:
-            print(pOutFile, (TR_S390SSEInstruction *) instr);
+            print(pOutFile, (TR::S390SSEInstruction *) instr);
          break;
       case TR::Instruction::IsIE:
-            print(pOutFile, (TR_S390IEInstruction *) instr);
+            print(pOutFile, (TR::S390IEInstruction *) instr);
          break;
       case TR::Instruction::IsVRIa:
       case TR::Instruction::IsVRIb:
       case TR::Instruction::IsVRIc:
       case TR::Instruction::IsVRId:
       case TR::Instruction::IsVRIe:
-            print(pOutFile, (TR_S390VRIInstruction *) instr);
+            print(pOutFile, (TR::S390VRIInstruction *) instr);
          break;
       case TR::Instruction::IsVRRa:
       case TR::Instruction::IsVRRb:
@@ -352,14 +352,14 @@ TR_Debug::printz(TR::FILE *pOutFile, TR::Instruction * instr)
       case TR::Instruction::IsVRRd:
       case TR::Instruction::IsVRRe:
       case TR::Instruction::IsVRRf:
-            print(pOutFile, (TR_S390VRRInstruction *) instr);
+            print(pOutFile, (TR::S390VRRInstruction *) instr);
          break;
       case TR::Instruction::IsVRSa:
       case TR::Instruction::IsVRSb:
       case TR::Instruction::IsVRSc:
       case TR::Instruction::IsVRV:
       case TR::Instruction::IsVRX:
-            print(pOutFile, (TR_S390VStorageInstruction *) instr);
+            print(pOutFile, (TR::S390VStorageInstruction *) instr);
          break;
       default:
          TR_ASSERT( 0, "unexpected instruction kind");
@@ -409,14 +409,14 @@ TR_Debug::getOutlinedTargetIfAny(TR::Instruction *instr)
       {
 #ifdef J9_PROJECT_SPECIFIC
       case TR::Instruction::IsVirtualGuardNOP:
-         label = ((TR_S390VirtualGuardNOPInstruction *)instr)->getLabelSymbol();
+         label = ((TR::S390VirtualGuardNOPInstruction *)instr)->getLabelSymbol();
          break;
 #endif
       case TR::Instruction::IsBranch:
-         label = ((TR_S390BranchInstruction *)instr)->getLabelSymbol();
+         label = ((TR::S390BranchInstruction *)instr)->getLabelSymbol();
          break;
       case TR::Instruction::IsRIE:
-         label = ((TR_S390RIEInstruction *)instr)->getLabelSymbol();
+         label = ((TR::S390RIEInstruction *)instr)->getLabelSymbol();
          break;
       default:
          return NULL;
@@ -538,7 +538,7 @@ TR_Debug::printAssocRegDirective(TR::FILE *pOutFile, TR::Instruction * instr)
 
 
 void
-TR_Debug::print(TR::FILE *pOutFile, TR_S390RRSInstruction * instr)
+TR_Debug::print(TR::FILE *pOutFile, TR::S390RRSInstruction * instr)
    {
    // *this    swipeable for debugging purposes
 
@@ -574,7 +574,7 @@ TR_Debug::print(TR::FILE *pOutFile, TR_S390RRSInstruction * instr)
    }
 
 void
-TR_Debug::print(TR::FILE *pOutFile, TR_S390IEInstruction * instr)
+TR_Debug::print(TR::FILE *pOutFile, TR::S390IEInstruction * instr)
    {
    // *this    swipeable for debugging purposes
    if (pOutFile == NULL)
@@ -595,19 +595,19 @@ TR_Debug::print(TR::FILE *pOutFile, TR_S390IEInstruction * instr)
  *   "Opcode  R1,I2 (mask=)"
  */
 void
-TR_Debug::print(TR::FILE *pOutFile, TR_S390RIEInstruction * instr)
+TR_Debug::print(TR::FILE *pOutFile, TR::S390RIEInstruction * instr)
    {
    // *this    swipeable for debugging purposes
 
 
 
    // let's determine what form of RIE we are dealing with
-   bool RIE1 = (instr->getRieForm() == TR_S390RIEInstruction::RIE_RR);
-   bool RIE2 = (instr->getRieForm() == TR_S390RIEInstruction::RIE_RI8);
-   bool RIE3 = (instr->getRieForm() == TR_S390RIEInstruction::RIE_RI16A);
-   bool RIE4 = (instr->getRieForm() == TR_S390RIEInstruction::RIE_RRI16);
-   bool RIE5 = (instr->getRieForm() == TR_S390RIEInstruction::RIE_IMM);
-   bool RIE6 = (instr->getRieForm() == TR_S390RIEInstruction::RIE_RI16G);
+   bool RIE1 = (instr->getRieForm() == TR::S390RIEInstruction::RIE_RR);
+   bool RIE2 = (instr->getRieForm() == TR::S390RIEInstruction::RIE_RI8);
+   bool RIE3 = (instr->getRieForm() == TR::S390RIEInstruction::RIE_RI16A);
+   bool RIE4 = (instr->getRieForm() == TR::S390RIEInstruction::RIE_RRI16);
+   bool RIE5 = (instr->getRieForm() == TR::S390RIEInstruction::RIE_IMM);
+   bool RIE6 = (instr->getRieForm() == TR::S390RIEInstruction::RIE_RI16G);
 
    // print the line prefix
    printPrefix(pOutFile, instr);
@@ -722,7 +722,7 @@ TR_Debug::print(TR::FILE *pOutFile, TR_S390RIEInstruction * instr)
  * Prints RIS format in "Opcode  R1,D4(B4),I2 (mask=)"
  */
 void
-TR_Debug::print(TR::FILE *pOutFile, TR_S390RISInstruction * instr)
+TR_Debug::print(TR::FILE *pOutFile, TR::S390RISInstruction * instr)
    {
    // *this    swipeable for debugging purposes
 
@@ -753,7 +753,7 @@ TR_Debug::print(TR::FILE *pOutFile, TR_S390RISInstruction * instr)
 
 
 void
-TR_Debug::print(TR::FILE *pOutFile, TR_S390LabelInstruction * instr)
+TR_Debug::print(TR::FILE *pOutFile, TR::S390LabelInstruction * instr)
    {
    // *this    swipeable for debugging purposes
 
@@ -807,7 +807,7 @@ TR_Debug::print(TR::FILE *pOutFile, TR_S390LabelInstruction * instr)
 
 #ifdef J9_PROJECT_SPECIFIC
 void
-TR_Debug::print(TR::FILE *pOutFile, TR_S390VirtualGuardNOPInstruction * instr)
+TR_Debug::print(TR::FILE *pOutFile, TR::S390VirtualGuardNOPInstruction * instr)
    {
    // *this    swipeable for debugging purposes
    printPrefix(pOutFile, instr);
@@ -830,7 +830,7 @@ TR_Debug::print(TR::FILE *pOutFile, TR_S390VirtualGuardNOPInstruction * instr)
 #endif
 
 void
-TR_Debug::print(TR::FILE *pOutFile, TR_S390BranchInstruction * instr)
+TR_Debug::print(TR::FILE *pOutFile, TR::S390BranchInstruction * instr)
    {
    // *this    swipeable for debugging purposes
    printPrefix(pOutFile, instr);
@@ -871,7 +871,7 @@ TR_Debug::print(TR::FILE *pOutFile, TR_S390BranchInstruction * instr)
    }
 
 void
-TR_Debug::print(TR::FILE *pOutFile, TR_S390BranchOnCountInstruction * instr)
+TR_Debug::print(TR::FILE *pOutFile, TR::S390BranchOnCountInstruction * instr)
    {
    // *this    swipeable for debugging purposes
    printPrefix(pOutFile, instr);
@@ -893,7 +893,7 @@ TR_Debug::print(TR::FILE *pOutFile, TR_S390BranchOnCountInstruction * instr)
    }
 
 void
-TR_Debug::print(TR::FILE *pOutFile, TR_S390BranchOnIndexInstruction * instr)
+TR_Debug::print(TR::FILE *pOutFile, TR::S390BranchOnIndexInstruction * instr)
    {
    printPrefix(pOutFile, instr);
 
@@ -928,7 +928,7 @@ TR_Debug::print(TR::FILE *pOutFile, TR_S390BranchOnIndexInstruction * instr)
    }
 
 void
-TR_Debug::print(TR::FILE *pOutFile, TR_S390AnnotationInstruction * instr)
+TR_Debug::print(TR::FILE *pOutFile, TR::S390AnnotationInstruction * instr)
    {
    // *this    swipeable for debugging purposes
    if (pOutFile == NULL)
@@ -941,7 +941,7 @@ TR_Debug::print(TR::FILE *pOutFile, TR_S390AnnotationInstruction * instr)
    }
 
 void
-TR_Debug::print(TR::FILE *pOutFile, TR_S390PseudoInstruction * instr)
+TR_Debug::print(TR::FILE *pOutFile, TR::S390PseudoInstruction * instr)
    {
    // *this    swipeable for debugging purposes
    if (pOutFile == NULL)
@@ -1011,7 +1011,7 @@ TR_Debug::print(TR::FILE *pOutFile, TR_S390PseudoInstruction * instr)
    }
 
 void
-TR_Debug::print(TR::FILE *pOutFile, TR_S390ImmInstruction * instr)
+TR_Debug::print(TR::FILE *pOutFile, TR::S390ImmInstruction * instr)
    {
    // *this    swipeable for debugging purposes
    if (pOutFile == NULL)
@@ -1026,7 +1026,7 @@ TR_Debug::print(TR::FILE *pOutFile, TR_S390ImmInstruction * instr)
    }
 
 void
-TR_Debug::print(TR::FILE *pOutFile, TR_S390Imm2Instruction * instr)
+TR_Debug::print(TR::FILE *pOutFile, TR::S390Imm2Instruction * instr)
    {
    // *this    swipeable for debugging purposes
    if (pOutFile == NULL)
@@ -1041,7 +1041,7 @@ TR_Debug::print(TR::FILE *pOutFile, TR_S390Imm2Instruction * instr)
    }
 
 void
-TR_Debug::print(TR::FILE *pOutFile, TR_S390ImmSnippetInstruction * instr)
+TR_Debug::print(TR::FILE *pOutFile, TR::S390ImmSnippetInstruction * instr)
    {
    // *this    swipeable for debugging purposes
    if (pOutFile == NULL)
@@ -1054,7 +1054,7 @@ TR_Debug::print(TR::FILE *pOutFile, TR_S390ImmSnippetInstruction * instr)
    }
 
 void
-TR_Debug::print(TR::FILE *pOutFile, TR_S390ImmSymInstruction * instr)
+TR_Debug::print(TR::FILE *pOutFile, TR::S390ImmSymInstruction * instr)
    {
    // *this    swipeable for debugging purposes
    printPrefix(pOutFile, instr);
@@ -1063,7 +1063,7 @@ TR_Debug::print(TR::FILE *pOutFile, TR_S390ImmSymInstruction * instr)
    }
 
 void
-TR_Debug::print(TR::FILE *pOutFile, TR_S390RegInstruction * instr)
+TR_Debug::print(TR::FILE *pOutFile, TR::S390RegInstruction * instr)
    {
    // *this    swipeable for debugging purposes
    printPrefix(pOutFile, instr);
@@ -1096,7 +1096,7 @@ TR_Debug::print(TR::FILE *pOutFile, TR_S390RegInstruction * instr)
    }
 
 void
-TR_Debug::print(TR::FILE *pOutFile, TR_S390RRInstruction * instr)
+TR_Debug::print(TR::FILE *pOutFile, TR::S390RRInstruction * instr)
    {
    // *this    swipeable for debugging purposes
    int32_t i=1;
@@ -1155,7 +1155,7 @@ TR_Debug::print(TR::FILE *pOutFile, TR_S390RRInstruction * instr)
 
 
 void
-TR_Debug::print(TR::FILE *pOutFile, TR_S390TranslateInstruction * instr)
+TR_Debug::print(TR::FILE *pOutFile, TR::S390TranslateInstruction * instr)
    {
    // *this    swipeable for debugging purposes
    printPrefix(pOutFile, instr);
@@ -1190,7 +1190,7 @@ TR_Debug::print(TR::FILE *pOutFile, TR_S390TranslateInstruction * instr)
 
 
 void
-TR_Debug::print(TR::FILE *pOutFile, TR_S390RRFInstruction * instr)
+TR_Debug::print(TR::FILE *pOutFile, TR::S390RRFInstruction * instr)
    {
    // *this    swipeable for debugging purposes
    printPrefix(pOutFile, instr);
@@ -1225,7 +1225,7 @@ TR_Debug::print(TR::FILE *pOutFile, TR_S390RRFInstruction * instr)
    }
 
 void
-TR_Debug::print(TR::FILE *pOutFile, TR_S390RRRInstruction * instr)
+TR_Debug::print(TR::FILE *pOutFile, TR::S390RRRInstruction * instr)
    {
    // *this    swipeable for debugging purposes
    printPrefix(pOutFile, instr);
@@ -1242,7 +1242,7 @@ TR_Debug::print(TR::FILE *pOutFile, TR_S390RRRInstruction * instr)
    }
 
 void
-TR_Debug::print(TR::FILE *pOutFile, TR_S390RIInstruction * instr)
+TR_Debug::print(TR::FILE *pOutFile, TR::S390RIInstruction * instr)
    {
    // *this    swipeable for debugging purposes
    int16_t imm = instr->getSourceImmediate();
@@ -1261,7 +1261,7 @@ TR_Debug::print(TR::FILE *pOutFile, TR_S390RIInstruction * instr)
    }
 
 void
-TR_Debug::print(TR::FILE *pOutFile, TR_S390RILInstruction * instr)
+TR_Debug::print(TR::FILE *pOutFile, TR::S390RILInstruction * instr)
    {
    // *this    swipeable for debugging purposes
    uint8_t * cursor = (uint8_t *)instr->getBinaryEncoding();
@@ -1344,7 +1344,7 @@ bitString(int8_t val)
    }
 
 void
-TR_Debug::print(TR::FILE *pOutFile, TR_S390RSLInstruction * instr)
+TR_Debug::print(TR::FILE *pOutFile, TR::S390RSLInstruction * instr)
    {
    printPrefix(pOutFile, instr);
    trfprintf(pOutFile, "%-*s", OPCODE_SPACING, getOpCodeName(&instr->getOpCode()));
@@ -1364,7 +1364,7 @@ TR_Debug::print(TR::FILE *pOutFile, TR_S390RSLInstruction * instr)
    }
 
 ////////////////////////////////////////////////////////////////////////////////
-// TR_S390RSLInstruction Class Definition
+// TR::S390RSLInstruction Class Definition
 //    ________ _______________________________________________
 //   | op     |     L1     |  B2 |   D2  |  R1 |  M3 |    op  |
 //   |________|____________|_____|_______|_____|_____|________|
@@ -1372,7 +1372,7 @@ TR_Debug::print(TR::FILE *pOutFile, TR_S390RSLInstruction * instr)
 //
 ////////////////////////////////////////////////////////////////////////////
 void
-TR_Debug::print(TR::FILE *pOutFile, TR_S390RSLbInstruction * instr)
+TR_Debug::print(TR::FILE *pOutFile, TR::S390RSLbInstruction * instr)
    {
    printPrefix(pOutFile, instr);
    trfprintf(pOutFile, "%-*s", OPCODE_SPACING, getOpCodeName(&instr->getOpCode()));
@@ -1411,7 +1411,7 @@ TR_Debug::print(TR::FILE *pOutFile, TR_S390RSLbInstruction * instr)
    }
 
 void
-TR_Debug::print(TR::FILE *pOutFile, TR_S390RSInstruction * instr)
+TR_Debug::print(TR::FILE *pOutFile, TR::S390RSInstruction * instr)
    {
    // *this    swipeable for debugging purposes
    printPrefix(pOutFile, instr);
@@ -1477,7 +1477,7 @@ TR_Debug::print(TR::FILE *pOutFile, TR_S390RSInstruction * instr)
    }
 
 void
-TR_Debug::print(TR::FILE *pOutFile, TR_S390MemInstruction * instr)
+TR_Debug::print(TR::FILE *pOutFile, TR::S390MemInstruction * instr)
    {
    // *this    swipeable for debugging purposes
    printPrefix(pOutFile, instr);
@@ -1531,7 +1531,7 @@ TR_Debug::print(TR::FILE *pOutFile, TR_S390MemInstruction * instr)
  * Print SSE format in "Opcode  D1(B1),D2(B2)"
  */
 void
-TR_Debug::print(TR::FILE *pOutFile, TR_S390SSEInstruction * instr)
+TR_Debug::print(TR::FILE *pOutFile, TR::S390SSEInstruction * instr)
    {
    // *this    swipeable for debugging purposes
 
@@ -1553,7 +1553,7 @@ TR_Debug::print(TR::FILE *pOutFile, TR_S390SSEInstruction * instr)
  * Print SS1 format in "Opcode  D1(L,B1),D2(B2)"
  */
 void
-TR_Debug::print(TR::FILE *pOutFile, TR_S390SS1Instruction * instr)
+TR_Debug::print(TR::FILE *pOutFile, TR::S390SS1Instruction * instr)
    {
    // *this    swipeable for debugging purposes
 
@@ -1575,7 +1575,7 @@ TR_Debug::print(TR::FILE *pOutFile, TR_S390SS1Instruction * instr)
  * Print SS2 format in "Opcode  D1(L1,B1),D2(L2,B2)"
  */
 void
-TR_Debug::print(TR::FILE *pOutFile, TR_S390SS2Instruction * instr)
+TR_Debug::print(TR::FILE *pOutFile, TR::S390SS2Instruction * instr)
    {
    // *this    swipeable for debugging purposes
 
@@ -1609,7 +1609,7 @@ TR_Debug::print(TR::FILE *pOutFile, TR_S390SS2Instruction * instr)
  * Print SS4 format in "Opcode  D1(R1,B1),D2(B2),R3"
  */
 void
-TR_Debug::print(TR::FILE *pOutFile, TR_S390SS4Instruction * instr)
+TR_Debug::print(TR::FILE *pOutFile, TR::S390SS4Instruction * instr)
    {
    // *this    swipeable for debugging purposes
 
@@ -1675,7 +1675,7 @@ TR_Debug::print(TR::FILE *pOutFile, TR_S390SS4Instruction * instr)
  * Print SSF format in "Opcode  R3, D1(B1),D2(B2)"
  */
 void
-TR_Debug::print(TR::FILE *pOutFile, TR_S390SSFInstruction * instr)
+TR_Debug::print(TR::FILE *pOutFile, TR::S390SSFInstruction * instr)
    {
    // *this    swipeable for debugging purposes
 
@@ -1701,7 +1701,7 @@ TR_Debug::print(TR::FILE *pOutFile, TR_S390SSFInstruction * instr)
  * Print SI format in "Opcode  D1(B1),imm"
  */
 void
-TR_Debug::print(TR::FILE *pOutFile, TR_S390SIInstruction * instr)
+TR_Debug::print(TR::FILE *pOutFile, TR::S390SIInstruction * instr)
    {
    // *this    swipeable for debugging purposes
 
@@ -1740,7 +1740,7 @@ TR_Debug::print(TR::FILE *pOutFile, TR_S390SIInstruction * instr)
  * Prints SIL format in "Opcode  D1(B1),imm"
  */
 void
-TR_Debug::print(TR::FILE *pOutFile, TR_S390SILInstruction * instr)
+TR_Debug::print(TR::FILE *pOutFile, TR::S390SILInstruction * instr)
    {
    // *this    swipeable for debugging purposes
 
@@ -1760,7 +1760,7 @@ TR_Debug::print(TR::FILE *pOutFile, TR_S390SILInstruction * instr)
  * Print S format in "Opcode  D1(B1)"
  */
 void
-TR_Debug::print(TR::FILE *pOutFile, TR_S390SInstruction * instr)
+TR_Debug::print(TR::FILE *pOutFile, TR::S390SInstruction * instr)
    {
    // *this    swipeable for debugging purposes
 
@@ -1775,7 +1775,7 @@ TR_Debug::print(TR::FILE *pOutFile, TR_S390SInstruction * instr)
    }
 
 void
-TR_Debug::print(TR::FILE *pOutFile, TR_S390OpCodeOnlyInstruction * instr)
+TR_Debug::print(TR::FILE *pOutFile, TR::S390OpCodeOnlyInstruction * instr)
    {
    printPrefix(pOutFile, instr);
    trfprintf(pOutFile, "%-*s", OPCODE_SPACING, getOpCodeName(&instr->getOpCode()));
@@ -1783,7 +1783,7 @@ TR_Debug::print(TR::FILE *pOutFile, TR_S390OpCodeOnlyInstruction * instr)
    }
 
 void
-TR_Debug::print(TR::FILE *pOutFile, TR_S390IInstruction * instr)
+TR_Debug::print(TR::FILE *pOutFile, TR::S390IInstruction * instr)
    {
    printPrefix(pOutFile, instr);
    trfprintf(pOutFile, "%-*s%d", OPCODE_SPACING, getOpCodeName(&instr->getOpCode()), instr->getImmediateField());
@@ -1791,7 +1791,7 @@ TR_Debug::print(TR::FILE *pOutFile, TR_S390IInstruction * instr)
    }
 
 void
-TR_Debug::print(TR::FILE *pOutFile, TR_S390RXInstruction * instr)
+TR_Debug::print(TR::FILE *pOutFile, TR::S390RXInstruction * instr)
    {
    // *this    swipeable for debugging purposes
    printPrefix(pOutFile, instr);
@@ -1835,7 +1835,7 @@ TR_Debug::print(TR::FILE *pOutFile, TR_S390RXInstruction * instr)
    }
 
 void
-TR_Debug::print(TR::FILE *pOutFile, TR_S390RXEInstruction * instr)
+TR_Debug::print(TR::FILE *pOutFile, TR::S390RXEInstruction * instr)
    {
    // *this    swipeable for debugging purposes
    printPrefix(pOutFile, instr);
@@ -1848,7 +1848,7 @@ TR_Debug::print(TR::FILE *pOutFile, TR_S390RXEInstruction * instr)
    }
 
 void
-TR_Debug::print(TR::FILE *pOutFile, TR_S390RXFInstruction * instr)
+TR_Debug::print(TR::FILE *pOutFile, TR::S390RXFInstruction * instr)
    {
    // *this    swipeable for debugging purposes
    printPrefix(pOutFile, instr);
@@ -1863,7 +1863,7 @@ TR_Debug::print(TR::FILE *pOutFile, TR_S390RXFInstruction * instr)
 
 #if !defined(PUBLIC_BUILD)
 void
-TR_Debug::print(TR::FILE *pOutFile, TR_S390MIIInstruction * instr)
+TR_Debug::print(TR::FILE *pOutFile, TR::S390MIIInstruction * instr)
    {
    // *this    swipeable for debugging purposes
    printPrefix(pOutFile, instr);
@@ -1893,7 +1893,7 @@ TR_Debug::print(TR::FILE *pOutFile, TR_S390MIIInstruction * instr)
 
 
 void
-TR_Debug::print(TR::FILE *pOutFile, TR_S390SMIInstruction * instr)
+TR_Debug::print(TR::FILE *pOutFile, TR::S390SMIInstruction * instr)
    {
    // *this    swipeable for debugging purposes
    printPrefix(pOutFile, instr);
@@ -2246,7 +2246,7 @@ TR_Debug::printSymbolName(TR::FILE *pOutFile, TR::Symbol *sym,  TR::SymbolRefere
 
 
 void
-TR_Debug::print(TR::FILE *pOutFile, TR_S390NOPInstruction * instr)
+TR_Debug::print(TR::FILE *pOutFile, TR::S390NOPInstruction * instr)
    {
    // *this    swipeable for debugging purposes
    printPrefix(pOutFile, instr);
@@ -3252,7 +3252,7 @@ TR_Debug::updateBranchName(const char * opCodeName, const char * brCondName)
    }
 
 void
-TR_Debug::print(TR::FILE *pOutFile, TR_S390VRIInstruction * instr)
+TR_Debug::print(TR::FILE *pOutFile, TR::S390VRIInstruction * instr)
    {
    printPrefix(pOutFile, instr);
 
@@ -3276,19 +3276,19 @@ TR_Debug::print(TR::FILE *pOutFile, TR_S390VRIInstruction * instr)
          break;
       case TR::Instruction::IsVRIb:
          trfprintf(pOutFile, ",0x%x,0x%x",
-               maskHalf(((TR_S390VRIbInstruction*)instr)->getImmediateField2()),
-               maskHalf(((TR_S390VRIbInstruction*)instr)->getImmediateField3()));
+               maskHalf(((TR::S390VRIbInstruction*)instr)->getImmediateField2()),
+               maskHalf(((TR::S390VRIbInstruction*)instr)->getImmediateField3()));
          break;
       case TR::Instruction::IsVRIc:
          trfprintf(pOutFile, ",0x%x", maskHalf(instr->getImmediateField()));
          break;
       case TR::Instruction::IsVRId:
          trfprintf(pOutFile, ",0x%x",
-               maskHalf(((TR_S390VRIdInstruction*)instr)->getImmediateField4()));
+               maskHalf(((TR::S390VRIdInstruction*)instr)->getImmediateField4()));
          break;
       case TR::Instruction::IsVRIe:
          trfprintf(pOutFile, ",0x%x",
-               maskHalf(((TR_S390VRIeInstruction*)instr)->getImmediateField3()));
+               maskHalf(((TR::S390VRIeInstruction*)instr)->getImmediateField3()));
          break;
       default:
          TR_ASSERT(false, "Unknown VRI type");
@@ -3305,7 +3305,7 @@ TR_Debug::print(TR::FILE *pOutFile, TR_S390VRIInstruction * instr)
    }
 
 void
-TR_Debug::print(TR::FILE *pOutFile, TR_S390VRRInstruction * instr)
+TR_Debug::print(TR::FILE *pOutFile, TR::S390VRRInstruction * instr)
    {
    // *this    swipeable for debugging purposes
    printPrefix(pOutFile, instr);
@@ -3339,7 +3339,7 @@ TR_Debug::print(TR::FILE *pOutFile, TR_S390VRRInstruction * instr)
    }
 
 void
-TR_Debug::print(TR::FILE *pOutFile, TR_S390VStorageInstruction * instr)
+TR_Debug::print(TR::FILE *pOutFile, TR::S390VStorageInstruction * instr)
    {
    printPrefix(pOutFile, instr);
 
