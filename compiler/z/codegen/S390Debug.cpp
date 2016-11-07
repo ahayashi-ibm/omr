@@ -1992,7 +1992,7 @@ TR_Debug::print(TR::FILE *pOutFile, TR::MemoryReference * mr, TR::Instruction * 
       if (mr->getConstantDataSnippet() != NULL)
          {
          uint64_t value;
-         TR_S390ConstantDataSnippet * cnstDataSnip = mr->getConstantDataSnippet();
+         TR::S390ConstantDataSnippet * cnstDataSnip = mr->getConstantDataSnippet();
 
          switch (cnstDataSnip->getConstantSize())
             {
