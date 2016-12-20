@@ -2178,6 +2178,7 @@ IlBuilder::WhileDoLoop(const char *whileCondition, TR::IlBuilder **body, TR::IlB
    AppendBuilder(*body);
 
    Goto(&loopContinue);
+   setComesBack(); // this goto is on one particular flow path, doesn't mean every path does a goto
 
    AppendBuilder(done);
 
