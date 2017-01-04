@@ -1300,6 +1300,9 @@ private:
    bool CompareAndBranchReduction();
    bool LoadAndMaskReduction(TR::InstOpCode::Mnemonic LZOpCode);
    bool removeMergedNullCHK();
+   bool trueCompEliminationForCompareAndBranch();
+   bool trueCompEliminationForCompare();
+   bool trueCompEliminationForLoadComp();
    bool attemptZ7distinctOperants();
    bool DeadStoreToSpillReduction();
    bool tryMoveImmediate();
