@@ -3877,6 +3877,7 @@ TR_Debug::getRuntimeHelperName(int32_t index)
          case TR_getStateGPU:               return "getStateGPU";
          case TR_flushGPU:                  return "flushGPU";
          case TR_callGPU:                   return "callGPU";
+	 case TR_profileGPU:                return "profileGPU";
 
          case TR_MTUnresolvedInt32Load:     return "MTUnresolvedInt32Load";
          case TR_MTUnresolvedInt64Load:     return "MTUnresolvedInt64Load";

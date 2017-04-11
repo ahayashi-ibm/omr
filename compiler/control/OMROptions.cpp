@@ -4578,6 +4578,7 @@ OMR::Options::TR_OptionStringToBit OMR::Options::_optionStringToBitMapping[] = {
 { "safeMT", TR_EnableSafeMT},
 { "enableMath", TR_EnableGPUEnableMath},
 { "DisableTransferHoist",  TR_EnableGPUDisableTransferHoist},
+{ "enableGPUProfiling",  TR_EnableGPUEnableProfiling},
 
 { "", 0} // End of list indicator
 };
