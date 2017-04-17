@@ -4579,6 +4579,7 @@ OMR::Options::TR_OptionStringToBit OMR::Options::_optionStringToBitMapping[] = {
 { "enableMath", TR_EnableGPUEnableMath},
 { "DisableTransferHoist",  TR_EnableGPUDisableTransferHoist},
 { "enableGPUProfiling",  TR_EnableGPUEnableProfiling},
+{ "enforceCPU",  TR_EnableGPUEnforceCPU},
 
 { "", 0} // End of list indicator
 };

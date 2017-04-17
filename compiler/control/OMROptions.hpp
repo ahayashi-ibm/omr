@@ -1089,6 +1089,7 @@ enum TR_CompilationOptions
    TR_EnableGPUEnableMath               = 0x00000020,
    TR_EnableGPUDisableTransferHoist     = 0x00000040,
    TR_EnableGPUEnableProfiling          = 0x00000080,
+   TR_EnableGPUEnforceCPU               = 0x00000100,
 
    // Instruction Level Dead Code tracing options
    //
